@@ -51,7 +51,7 @@ class TagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
-    pagination_class = None
+    # pagination_class = None
     permission_classes = [IsAdminOrCreateOnlyOrReadOnly]
     
 class CommentViewSet(viewsets.ModelViewSet):
