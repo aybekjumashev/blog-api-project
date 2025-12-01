@@ -18,9 +18,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # 5. Kodtı kóshiriw
 # Qalǵan barlıq fayllardı konteynerge kóshiremiz
-COPY . .   
-RUN python manage.py migrate
-RUN pip install gunicorn
+COPY . . 
 
 # 6. Iske túsiriw buyrıǵı
 # Serverde runserver EMES, Gunicorn isletiw kerek
