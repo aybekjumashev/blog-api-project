@@ -5,10 +5,8 @@ services:  # Servisler (Konteynerler) dizimi
     image: postgres:17-alpine  # Rásmiy, jeńil PostgreSQL
     volumes:
       - postgres_data:/var/lib/postgresql/data/  # Maǵlıwmatlardı saqlaw (Persistency)
-    environment:
-      - POSTGRES_DB=blog_api_project_db  # Baza atı
-      - POSTGRES_USER=blog_api_project_user  # Paydalanıwshı
-      - POSTGRES_PASSWORD=Qazwsx_987456  # Parol
+    env_file:
+      - .env
     ports:
       - "5432:5432" # Kompyuterden bazaǵa kiriw ushın (optional)
 
@@ -19,15 +17,15 @@ services:  # Servisler (Konteynerler) dizimi
     # Real deployda: command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app  # Kodtı jańalaw (Hot-reload) ushın
+      - static_volume:/app/staticfiles
     ports:
       - "8000:8000"  # Brauzerden kiriw ushın
     depends_on:
       - db  # Baza iske túspesten, Django iske túspewi kerek
-    environment:
-      - DB_NAME=blog_api_project_db
-      - DB_USER=blog_api_project_user
-      - DB_PASSWORD=Qazwsx_987456
-      - DB_HOST=db  # Servis atı hostname boladı!
+    env_file:
+      - .env
+
 
 volumes:
   postgres_data:  # Baza maǵlıwmatları saqlanatuǵın orın
+  static_volume:
