@@ -21,18 +21,12 @@ jobs:
           port: 22
           # Serverde orınlanatuǵın buyrıqlar:
           script: |
-            # 1. Proekt papkasına kiriw (Papka atın ózińizdikine ózgertiń!)
-            cd /home/ubuntu/my-django-project
+            cd /home/blog-api-project
 
-            # 2. GitHub-tan eń jańa kodtı tartıp alıw
             echo "Kodtı jańalaw..."
             git pull origin main
 
-            # 3. Dockerdi jańalaw
-            # -d: Fon rejiminde
-            # --build: Eger Dockerfile ózgergen bolsa, qayta qurıw
             echo "Dockerdi qayta iske túsiriw..."
             docker compose up -d --build
 
-            # 4. Eski imidjlerdi hám keshti tazalaw (server tolıp qalmawı ushın)
             docker system prune -f
