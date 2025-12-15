@@ -5,6 +5,12 @@ from .models import Post, Category, Tag
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'author', 'created_at']
+    list_filter = ['author', 'created_at']
+    search_fields = ['title', 'content']
+    ordering = ['-created_at']
+    readonly_fields = ['created_at', 'updated_at']
+    
+
 
 
 @admin.register(Category)
