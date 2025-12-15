@@ -8,7 +8,7 @@ on:
 
 jobs:
   # 1-jumıs: Testlew
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
     
     services:
