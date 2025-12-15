@@ -30,12 +30,10 @@ jobs:
             docker-compose down
             docker-compose up -d --build
             
-            sleep 10
-
             echo "Maǵlıwmatlar bazasına ózgerislerdi kiritiw..."
-            docker-compose exec web python manage.py migrate
+            docker-compose exec -T web python manage.py migrate
 
             echo "Statikalıq fayllardı jıynaw..."
-            docker-compose exec web python manage.py collectstatic --noinput        
+            docker-compose exec -T web python manage.py collectstatic --noinput        
 
             docker system prune -f
