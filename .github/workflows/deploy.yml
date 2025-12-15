@@ -27,6 +27,6 @@ jobs:
             git pull origin main
 
             echo "Dockerdi qayta iske túsiriw..."
-            docker compose up -d --build
+            docker-compose up -d --build
 
             docker system prune -f
