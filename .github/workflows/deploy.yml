@@ -29,6 +29,8 @@ jobs:
             echo "Dockerdi qayta iske túsiriw..."
             docker-compose down
             docker-compose up -d --build
+            
+            sleep 10
 
             echo "Maǵlıwmatlar bazasına ózgerislerdi kiritiw..."
             docker-compose exec web python manage.py migrate
